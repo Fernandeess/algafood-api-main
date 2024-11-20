@@ -6,9 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
+@JsonRootName("Cozinha") // Altera o nome do root do json
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
@@ -17,8 +21,9 @@ public class Cozinha {
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonIgnore // ignora o valor na response
 	private Long id;
-	
+	@JsonProperty("Marca") // Altera o nome da propriedade na response
 	@Column(nullable = false)
 	private String nome;
 

@@ -4,7 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.algaworks.algafood.domain.model.Cozinha;
@@ -21,6 +24,11 @@ public class CozinhaController {
 	public List<Cozinha> listar() {
 		return cozinhaRepository.listar();
 	}
+	@GetMapping("/{cozinhaId}")
+	public Cozinha buscar(@PathVariable("cozinhaId") Long id) {
+		return cozinhaRepository.buscar((Long)id);
+	}
+	
 	
 }
  
